@@ -142,7 +142,6 @@ Her iki katmanın da bilinmediği durumlar için:
 ```bash
 ./hashmapper -template '?(?(PASSWORD))' -hash <HASH> -password "parola"
 ```
-```
 Templateler arttırılarak gidebilir. multi parametresi hepsini dener süre uzayabilir.
 
 ### 5. Hex ve Raw Çıktı Farkları
