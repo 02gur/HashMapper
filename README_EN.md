@@ -1,5 +1,8 @@
 # HashMapper
 
+> **Note:** For correct parameter parsing in Windows Command Prompt (CMD/PowerShell) (such as `?` or parentheses), you should always use **double quotes (`"`)** instead of single quotes (`'`) when passing parameters like `-template` in the usage examples.
+
+
 HashMapper is a Go tool designed to detect and crack complex and nested hash algorithms. It is especially useful for determining the method used to create a target hash when multiple algorithms are used in succession or when a salt is added to the hash text.
 A hash obtained from the system and a clear text password are required for the tool to work.
 
@@ -21,7 +24,6 @@ A total of 70 algorithms are supported. You can use the `-list` argument to see 
 ```
 
 **Available algorithms:**
-```bash
     1. adler32                      2. blake2b-256              
     3. blake2b-384                  4. blake2b-512              
     5. blake2s-128                  6. blake2s-256              
@@ -57,7 +59,7 @@ A total of 70 algorithms are supported. You can use the `-list` argument to see 
    65. tiger192,4                  66. whirlpool                
    67. xxh128                      68. xxh3                     
    69. xxh32                       70. xxh64  
-```
+
 ## Usage Parameters
 
 The mandatory parameters for usage are `-hash` (the hex value to crack) and `-password` (the experimental plaintext password).
@@ -89,9 +91,9 @@ If you suspect an algorithm might have been applied N times in succession, you c
 
 For example, the following command tries the password with SHA1 consecutively from 1 to 5 times:
 ```bash
-./hashmapper -template 'SHA1(?)' -multi 5 -hash <HASH> -password "password"
+./hashmapper -template "SHA1(?)" -multi 5 -hash <HASH>" -password "password"
 
-./hashmapper -template '?(?)' -multi 5 -hash <HASH> -password "password"
+./hashmapper -template "?(?)" -multi 5 -hash "<HASH>" -password "password"
 # It sequentially tests the following:
 # Depth 1: SHA1(SHA1(PASSWORD))
 # Depth 2: SHA1(SHA1(SHA1(PASSWORD)))
@@ -112,7 +114,7 @@ If you think a target is encrypted with only a single algorithm, run it without 
 If you know the hash was created in a specific format (e.g., MD5(SHA1(PASSWORD))):
 
 ```bash
-./hashmapper -template 'MD5(SHA1(PASSWORD))' -hash <HASH_VALUE> -password "secretpassword"
+./hashmapper -template "MD5(SHA1(PASSWORD))" -hash "<HASH_VALUE>" -password "secretpassword"
 ```
 
 ### 3. Salt Usage
@@ -121,11 +123,11 @@ If you know a salt (additional data used alongside the password) value was used 
 
 * Password + Salt (Suffix):
 ```bash
-./hashmapper -template 'MD5(?(PASSWORD.SALT))' -hash <HASH> -password "password" -salt "123"
+./hashmapper -template "MD5(?(PASSWORD.SALT))" -hash "<HASH>" -password "password" -salt "123"
 ```
 * Salt + Password (Prefix):
 ```bash
-./hashmapper -template 'MD5(SALT.?(PASSWORD))' -hash <HASH> -password "password" -salt "123"
+./hashmapper -template "MD5(SALT.?(PASSWORD))" -hash "<HASH>" -password "password" -salt "123"
 ```
 
 ### 4. Finding Unknown Layers (?)
@@ -133,14 +135,15 @@ If you know a salt (additional data used alongside the password) value was used 
 If you know the outer layer is MD5 but don't know what was used in the inner layer, you can use the `?` operator.
 
 ```bash
-./hashmapper -template 'MD5(?(PASSWORD))' -hash <HASH> -password "password"
+./hashmapper -template "MD5(?(PASSWORD))" -hash "<HASH>" -password "<PASSWORD>"
 ```
 
 For situations where both layers are unknown:
 
 ```bash
-./hashmapper -template '?(?(PASSWORD))' -hash <HASH> -password "password"
+./hashmapper -template "?(?(PASSWORD))" -hash "<HASH>" -password "<PASSWORD>"
 ```
+Templates can be increased. The multi parameter tries them all, which may take longer.
 
 ### 5. Hex and Raw Output Differences
 
