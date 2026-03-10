@@ -145,7 +145,7 @@ Her iki katmanın da bilinmediği durumlar için:
 ```
 Templateler arttırılarak gidebilir. multi parametresi hepsini dener süre uzayabilir.
 
-### 6. Hex ve Raw Çıktı Farkları
+### 5. Hex ve Raw Çıktı Farkları
 
 Özellikle PHP gibi dillerde bir hash fonksiyonunun çıktısı metin formatında (hex) dönerken `hash('md5', 'veri', true)` şeklinde kullanıldığında binary (raw byte) döner. HashMapper varsayılan olarak her iki durumu da hesaplayıp dener.
 
