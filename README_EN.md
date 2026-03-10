@@ -24,6 +24,7 @@ A total of 70 algorithms are supported. You can use the `-list` argument to see 
 ```
 
 **Available algorithms:**
+```bash
     1. adler32                      2. blake2b-256              
     3. blake2b-384                  4. blake2b-512              
     5. blake2s-128                  6. blake2s-256              
@@ -59,7 +60,7 @@ A total of 70 algorithms are supported. You can use the `-list` argument to see 
    65. tiger192,4                  66. whirlpool                
    67. xxh128                      68. xxh3                     
    69. xxh32                       70. xxh64  
-
+```
 ## Usage Parameters
 
 The mandatory parameters for usage are `-hash` (the hex value to crack) and `-password` (the experimental plaintext password).
