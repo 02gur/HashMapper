@@ -22,6 +22,7 @@ Toplam 70 adet algoritma desteklenmektedir. Algoritmaların listesini görmek i�
 ```
 
 **Mevcut algoritmalar:** 
+```bash
     1. adler32                      2. blake2b-256              
     3. blake2b-384                  4. blake2b-512              
     5. blake2s-128                  6. blake2s-256              
@@ -57,7 +58,7 @@ Toplam 70 adet algoritma desteklenmektedir. Algoritmaların listesini görmek i�
    65. tiger192,4                  66. whirlpool                
    67. xxh128                      68. xxh3                     
    69. xxh32                       70. xxh64  
-
+```
 ## Kullanım Parametreleri
 
 Kullanım zorunlu parametreler `-hash` (kırılacak hex değeri) ve `-password` (deneysel düz metin parolası).
