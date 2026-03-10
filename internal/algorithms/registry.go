@@ -17,10 +17,8 @@ import (
 	"hash/crc32"
 	"hash/crc64"
 	"hash/fnv"
-	"io"
 	"regexp"
 	"strings"
-	"unicode"
 	"unicode/utf16"
 
 	"golang.org/x/crypto/argon2"
@@ -1424,11 +1422,3 @@ func allHex(s string) bool {
 	}
 	return true
 }
-
-// IsAlphaNum returns true if the rune is alphanumeric.
-func IsAlphaNum(r rune) bool {
-	return unicode.IsLetter(r) || unicode.IsDigit(r)
-}
-
-// io.Reader sink used internally.
-var _ io.Reader = (*strings.Reader)(nil)

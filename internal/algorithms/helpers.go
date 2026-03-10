@@ -290,9 +290,7 @@ func snefruHash(data []byte, bits int) []byte {
 	for pass := 0; pass < 8; pass++ {
 		for i := range state {
 			j := (i + pass*13) % hashLen
-			k := (i + pass*7 + 5) % hashLen
 			state[i] ^= byte(bits32RotL(uint32(state[j])^uint32(block[i]), uint(pass+1)))
-			_ = k
 		}
 	}
 	return state[:outLen]

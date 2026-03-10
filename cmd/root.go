@@ -15,7 +15,7 @@ var rootCmd = &cobra.Command{
 	Long: `HashMapper is a highly concurrent, multi-layered hash identification and
 brute-force tool written in Go.
 
-It supports 70+ algorithms, salt formatting, and deep nested template decryption.
+It supports 87+ algorithms, salt formatting, and deep nested template decryption.
 
 Examples:
   # Identify a hash
