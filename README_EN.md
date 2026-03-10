@@ -142,7 +142,7 @@ For situations where both layers are unknown:
 ./hashmapper -template '?(?(PASSWORD))' -hash <HASH> -password "password"
 ```
 
-### 6. Hex and Raw Output Differences
+### 5. Hex and Raw Output Differences
 
 Especially in languages like PHP, the output of a hash function returns in text format (hex), whereas when used as `hash('md5', 'data', true)`, it returns binary (raw byte). HashMapper calculates and tries both situations by default.
 
